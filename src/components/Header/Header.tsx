@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 
+import SideDrawer from '../SideDrawer/SideDrawer';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Header: React.FC = props => {
 	const [scroll400, setScroll400] = useState('');
+	const [drawerOpen, setSDrawerOpen] = useState(false);
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
@@ -21,19 +24,22 @@ const Header: React.FC = props => {
 
 	return (
 		<div>
+			<SideDrawer show={drawerOpen} close={() => setSDrawerOpen(!drawerOpen)} />
 			<div className='container'>
 				<div className='parent'>
 					<header>
 						<div className='logo'>
-							<FontAwesomeIcon icon={faBars} />{' '}
+							<a onClick={() => setSDrawerOpen(!drawerOpen)}>
+								<FontAwesomeIcon icon={faBars} />
+							</a>{' '}
 							<a href='http://localhost:300'>News feed</a>
 						</div>
 
 						<nav className={scroll400}>
-							<a href='http://localhost:300'>Inicio</a>
-							<a href='http://localhost:300'>Blog</a>
-							<a href='http://localhost:300'>Proyectos</a>
-							<a href='http://localhost:300'>Contacto</a>
+							<a href='http://localhost:300'>POLITICS</a>
+							<a href='http://localhost:300'>POLITICS</a>
+							<a href='http://localhost:300'>POLITICS</a>
+							<a href='http://localhost:300'>POLITICS</a>
 						</nav>
 					</header>
 				</div>
