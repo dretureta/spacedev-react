@@ -18,10 +18,13 @@
     "typescript": "3.6.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev-json-server": "json-server -p 8080 src/store/articles.json",
+    "start": "concurrently \"yarn client\" \"yarn dev-json-server\""
+
   },
   "eslintConfig": {
     "extends": "react-app"
