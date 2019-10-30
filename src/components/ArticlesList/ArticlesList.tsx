@@ -8,6 +8,8 @@ import { faSmile } from '@fortawesome/free-solid-svg-icons';
 import { faFrown } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
+import MoodItem from './MoodItem';
+
 interface Article {
 	author: string;
 	title: string;
@@ -19,7 +21,7 @@ interface Article {
 	mood: string;
 }
 
-const ArticlesList = () => {
+const ArticlesList: React.FC = props => {
 	const [articles, setArticles] = useState<Article[]>([]);
 	const [open, setOpen] = useState<boolean>(false);
 	const [drop, setDrop] = useState<number | null>(null);
@@ -104,39 +106,24 @@ const ArticlesList = () => {
 											{open && drop === index && (
 												<div className='dropdown'>
 													<ul>
-														<li
-															value='Positive'
-															onClick={() => changeMood(index, 'Positive')}
-														>
-															<FontAwesomeIcon
-																icon={faSmile}
-																color='green'
-																size='2x'
-															/>
-															Positive
-														</li>
-														<li
-															value='Negative'
-															onClick={() => changeMood(index, 'Negative')}
-														>
-															<FontAwesomeIcon
-																icon={faFrown}
-																color='red'
-																size='2x'
-															/>
-															Negative
-														</li>
-														<li
-															value='Neutral'
-															onClick={() => changeMood(index, 'Neutral')}
-														>
-															<FontAwesomeIcon
-																icon={faMeh}
-																color='gray'
-																size='2x'
-															/>
-															Neutral
-														</li>
+														<MoodItem
+															click={() => changeMood(index, 'Positive')}
+															icon={faSmile}
+															color='green'
+															mood='Positive'
+														/>
+														<MoodItem
+															click={() => changeMood(index, 'Negative')}
+															icon={faFrown}
+															color='red'
+															mood='Negative'
+														/>
+														<MoodItem
+															click={() => changeMood(index, 'Neutral')}
+															icon={faMeh}
+															color='gray'
+															mood='Neutral'
+														/>
 													</ul>
 												</div>
 											)}
